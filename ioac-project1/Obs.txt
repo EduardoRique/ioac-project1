@@ -1,0 +1,5 @@
+Compilação: g++ -Wall -ansi -pedantic -std=c++11 -o prog pipeline.cpp main.cpp
+
+Execução: ./prog arquivo.ext
+
+O arquivo deve estar na mesma pasta

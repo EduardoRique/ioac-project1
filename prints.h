@@ -2,10 +2,10 @@
 #define PRINTS_H
 
 #include <iostream>
+#include <fstream>
+#include <string>
 
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 typedef struct{
     string opcode;
@@ -14,10 +14,18 @@ typedef struct{
     string opr2;
     }Instrucao;
 
-void printif(Instrucao instrucoes[], int &aux, int ciclo, int q);
-void printid(Instrucao instrucoes[], int &aux, int ciclo, int q);
-void printex(Instrucao instrucoes[], int &aux, int ciclo, int q);
-void printmem(Instrucao instrucoes[], int &aux, int ciclo, int q);
-void printwb(Instrucao instrucoes[], int &aux, int ciclo, int &q);
+struct Dependencia {
+	int instrucao[2];
+};
+
+
+void processando(Instrucao *linhas, int &countInstruction, Dependencia *info);
+
+void printif(Instrucao instrucoes[], int aux[], int ciclo, int q[], int *dep, int light[], int contador);
+void printid(Instrucao instrucoes[], int aux[], int ciclo, int q[], int dep[], int light[], int contador);
+void printex(Instrucao instrucoes[], int aux[], int ciclo, int q[], int *dep, int light[], int contador);
+void printmem(Instrucao instrucoes[], int aux[], int ciclo, int q[], int *dep, int light[], int contador);
+void printwb(Instrucao instrucoes[], int aux[], int ciclo, int q[], int *dep, int light[], int contador);
+void print(Instrucao instrucoes[], int aux[], int ciclo, int q[], int *dep, int light[], int contador);
 
 #endif
